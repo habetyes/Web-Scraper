@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Mars, Earth's Younger Brother</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    </head>
+
+    <style>
+    .jumbotron{
+        background-color: rgba(206, 107, 50, 0.877)
+
+    }
+    .center{
+        margin: auto;
+        width: 50%;
+        padding: 10px;
+    }
+
+    .center-text{
+        text-align: center;
+    }
+    </style>
+
+    <body>
+        <div class="jumbotron">
+            <div class="container text-center">
+            <h1 class="display-4 center-text">Mars: Elon welcomes you.</h1>
+            <p class="lead center-text">For the most up to date information on Earth's red-headed stepchild, just press the button below</p>
+            <hr class="my-4">
+            <a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a>
+            </div>
+        </div>
+
+        <div class="container">
+            <h1>Latest Mars News</h1>
+            <p>{{mars.news_header}}</p>
+            <p>{{mars.news_body}}</p>
+        </div>
+    </body>
+</html>
