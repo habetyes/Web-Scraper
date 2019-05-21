@@ -1,41 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Mars, Earth's Younger Brother</title>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    </head>
 
-    <style>
-    .jumbotron{
+<head>
+    <title>Mars, Earth's Younger Brother</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+</head>
+
+<style>
+    .jumbotron {
         background-color: rgba(206, 107, 50, 0.877)
-
     }
-    .center{
+
+    .center {
         margin: auto;
         width: 50%;
         padding: 10px;
     }
 
-    .center-text{
+    .center-text {
         text-align: center;
     }
-    </style>
 
-    <body>
-        <div class="jumbotron">
-            <div class="container text-center">
+    .fit {
+        max-width: 75%
+    }
+
+    .fit-pic {
+        max-width: 75%
+    }
+
+    .border {
+        outline-style: double;
+        outline-color: black
+    }
+
+    .padding {
+        padding-top: 20px;
+    }
+
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-rows: repeat(8, 5vw);
+        grid-gap: 15px;
+    }
+
+    .gallery__item--1 {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 3;
+    }
+
+    .gallery__item--2 {
+        grid-column-start: 3;
+        grid-column-end: 5;
+        grid-row-start: 1;
+        grid-row-end: 3;
+    }
+
+    .gallery__item--3 {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 4;
+        grid-row-end: 6;
+    }
+
+    .gallery__item--4 {
+        grid-column-start: 3;
+        grid-column-end: 5;
+        grid-row-start: 4;
+        grid-row-end: 6;
+    }
+
+    .bucket {
+        width: 90%;
+        margin-left: 10%;
+        margin-top: 5%
+    }
+</style>
+
+<body>
+    <div class="jumbotron">
+        <div class="container text-center">
             <h1 class="display-4 center-text">Mars: Elon welcomes you.</h1>
-            <p class="lead center-text">For the most up to date information on Earth's red-headed stepchild, just press the button below</p>
+            <p class="lead center-text">For the most up to date information on Earth's red-headed stepchild, just press
+                the button below</p>
             <hr class="my-4">
             <a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row center-text">
+            <div class="col-12">
+                <h1><a href="https://mars.nasa.gov/news/" target="_blank">Latest Mars News</a></h1>
+                <p>{{mars.news_header}}</p>
+                <p>{{mars.news_body}}</p>
             </div>
         </div>
-
-        <div class="container">
-            <h1>Latest Mars News</h1>
-            <p>{{mars.news_header}}</p>
-            <p>{{mars.news_body}}</p>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h2><a href="https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars" target="_blank">Featured Mars
+                        Image</a></h2>
+                <a href="https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars" target="_blank">
+                    <img class="fit" src={{mars.featured_image}}>
+                </a>
+            </div>
+            <div class="col-md-4 border" style="margin-top: 65px;">
+                <h4><a href="https://twitter.com/marswxreport?lang=en" target="_blank">Current Weather on Mars</a></h4>
+                <p>{{mars.tweet}}</p>
+                <br>
+            </div>
+            <br>
+            <br>
+            <div class="col-md-4 justify-content-end padding">
+                <h4><a href="https://space-facts.com/mars/" target="_blank">Mars Facts</a></h4>
+                <td>{{mars.table | safe}}</td>
+            </div>
         </div>
-    </body>
+    </div>
+
+<!-- Create a grid to house images. Couldnt get Bootstrap to cooperate -->
+    <div class="bucket">
+        <h2><a href = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars" target="_blank">Mars Hemispheres</a></h2>
+        <div class="gallery">
+            <figure class="gallery__item gallery__item--1">
+                <img class="fit-pic" src={{mars.hemisphere[0].img_url}}>
+                <p>{{mars.hemisphere[0].title}}</p>
+            </figure>
+            <figure class="gallery__item gallery__item--2">
+                <img class="fit-pic" src={{mars.hemisphere[1].img_url}}>
+                <p>{{mars.hemisphere[1].title}}</p>
+            </figure>
+            <figure class="gallery__item gallery__item--3">
+                <img class="fit-pic" src={{mars.hemisphere[2].img_url}}>
+                <p>{{mars.hemisphere[2].title}}</p>
+            </figure>
+            <figure class="gallery__item gallery__item--4">
+                <img class="fit-pic" src={{mars.hemisphere[3].img_url}}>
+                <p>{{mars.hemisphere[3].title}}</p>
+            </figure>
+        </div>
+    </div>
+
+
+
+</body>
+
 </html>

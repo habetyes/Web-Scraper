@@ -79,6 +79,7 @@ def mars_facts():
     table = pd.read_html(url)
     df = table[0]
     df.columns = ['Metric', 'Measurement']
+    df.set_index('Metric', inplace=True)
     html_table = df.to_html()
     browser.quit()
     return(html_table)
@@ -131,5 +132,4 @@ def scrape():
 
    
     # Return results
-    print(mars_data)
     return mars_data
